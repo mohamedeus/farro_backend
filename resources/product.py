@@ -16,19 +16,24 @@ class Product(MethodView):
     
     @blp.response(200, ProductSchema)
     def get(self, product_id):
-        return "Created product"
+        product = ProductModel.query.get_or_404(product_id)
+        return product
     
     def delete(self, product_id):
-        return "Deleted product"
+        product = ProductModel.query.get_or_404(product_id)
+        db.session.delete(product)
+        db.session.commit()
+        return {"message":"Product Deleted"}, 200
 
 
+    #TODO implement update
 
 @blp.route("/product")
 class ProductList(MethodView):
     
-    @blp.response(200, ProductSchema)
+    @blp.response(200, ProductSchema(many=True))
     def get(self):
-        return "Product Lists"
+        return ProductModel.query.all()
     
     @blp.arguments(ProductSchema)
     @blp.response(201, ProductSchema)

@@ -11,4 +11,4 @@ class ProductModel(db.Model):
     description = db.Column(db.Text, nullable=True)
     unit = db.Column(db.String(50), nullable=False)
     
-    news = db.relationship("NewsModel", back_populates="product")
+    news = db.relationship("NewsModel", back_populates="product", cascade="all, delete")

@@ -1,6 +1,9 @@
 #libraries we use
+requests>=2.0.0
 flask
 flask-smorest
 python-dotenv
 sqlalchemy
 flask-sqlalchemy
+python-dateutil
+pytest

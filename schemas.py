@@ -17,8 +17,10 @@ class PlainNewsSchema(Schema):
     description = fields.Str()
     article_url = fields.Str(required=True)
     image_url = fields.Str()
-    time_published = fields.DateTime()
+    # time_published = fields.DateTime()
     
+
+#TODO implement UPDATES
 
 class ProductSchema(PlainProductSchema):
     news = fields.List(fields.Nested(PlainNewsSchema), dump_only=True)

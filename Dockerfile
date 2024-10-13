@@ -3,7 +3,7 @@ WORKDIR /app
 COPY requirements.txt .
 EXPOSE 5000
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
 # Define environment variable
 ENV FLASK_APP=app.py
