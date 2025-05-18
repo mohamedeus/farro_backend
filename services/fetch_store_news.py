@@ -34,12 +34,11 @@ def fetch_and_store_news():
             product_name = product.get("product_name")
             category = product.get("category")
 
-            # Prepare the NewsAPI request
             url = f"https://newsapi.org/v2/everything"
             params = {
                 "q": f"{product_name}-{category}",
                 "apiKey": NEWS_API_KEY,
-                "pageSize": 3,  # Limit to 3 articles
+                "pageSize": 3, 
                 "language": "en",
                 "sortBy": "relevancy"
             }
@@ -66,7 +65,7 @@ def fetch_and_store_news():
                             # time_published=published_at,
                             product_id=product.get("product_id")
                         )
-                        # Append the NewsModel instance directly
+                        
                         news_items.append(news_item)
 
                     except SQLAlchemyError as e:
